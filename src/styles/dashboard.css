@@ -1,0 +1,338 @@
+/* ============================================================
+   DASHBOARD
+   Bottom results panel : steps / path / matrix tabs
+   ============================================================ */
+
+.dashboard {
+  display:        flex;
+  flex-direction: column;
+  height:         100%;
+  overflow:       hidden;
+}
+
+/* Empty state */
+.dashboard--empty {
+  align-items:     center;
+  justify-content: center;
+}
+
+.dashboard__empty-text,
+.dashboard__hint {
+  font-size:  var(--font-size-sm);
+  color:      var(--color-text-muted);
+  text-align: center;
+  padding:    var(--space-lg);
+}
+
+/* Content area */
+.dashboard__content {
+  flex:       1;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding:    var(--space-sm) var(--space-md);
+}
+
+/* ── Step table ── */
+.step-table-wrap {
+  overflow-x: auto;
+}
+
+.step-table {
+  width:           100%;
+  border-collapse: collapse;
+  font-size:       var(--font-size-sm);
+  white-space:     nowrap;
+}
+
+.step-table__th {
+  padding:          6px 12px;
+  text-align:       left;
+  font-size:        var(--font-size-xs);
+  font-weight:      600;
+  color:            var(--color-text-secondary);
+  text-transform:   uppercase;
+  letter-spacing:   0.05em;
+  border-bottom:    2px solid var(--color-border);
+  background:       var(--color-bg-surface);
+  position:         sticky;
+  top:              0;
+}
+
+.step-table__th--node { 
+  color: var(--color-accent); 
+  text-transform: lowercase;
+  font-size: var(--font-size-md);
+}
+
+.step-table__td {
+  padding:       5px 12px;
+  border-bottom: 1px solid var(--color-border);
+  color:         var(--color-text-primary);
+}
+
+.step-table__td--arc   { font-family: var(--font-mono); }
+.step-table__td--dist  { font-family: var(--font-mono); font-weight: 500; }
+.step-table__td.is-inf { color: var(--color-text-muted); }
+
+/* Row states */
+.step-table__row--active {
+  background: var(--color-accent-light);
+}
+.step-table__row--active .step-table__td {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.step-table__row--future {
+  opacity: 0.4;
+}
+.step-table__row--updated {
+  border-left: 3px solid var(--color-success);
+}
+
+/* Updated badge */
+.step-badge {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       var(--font-size-xs);
+  font-weight:     600;
+  padding:         2px 8px;
+  border-radius:   var(--radius-sm);
+}
+.step-badge--yes { background: var(--color-success-light); color: var(--color-success); }
+.step-badge--no  { background: var(--color-bg-subtle);     color: var(--color-text-muted); }
+
+/* ── Path result ── */
+.path-result {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-md);
+  padding:        var(--space-md);
+  border-radius:  var(--radius-lg);
+  margin:         var(--space-sm) 0;
+}
+
+.path-result--success {
+  background:  var(--color-success-light);
+  border-left: 4px solid var(--color-success);
+}
+.path-result--cycle {
+  background:  var(--color-danger-light);
+  border-left: 4px solid var(--color-danger);
+  flex-direction: row;
+  align-items: flex-start;
+  gap:         var(--space-md);
+}
+.path-result--unreachable {
+  background:  var(--color-bg-subtle);
+  border-left: 4px solid var(--color-text-muted);
+  flex-direction: row;
+  align-items: center;
+}
+
+.path-result__header {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+}
+
+.path-result__icon { flex-shrink: 0; }
+
+.path-result--success .path-result__icon  { color: var(--color-success); }
+.path-result--cycle .path-result__icon    { color: var(--color-danger);  }
+.path-result--unreachable .path-result__icon { color: var(--color-text-muted); }
+
+.path-result__title {
+  font-size:   var(--font-size-sm);
+  font-weight: 600;
+  color:       var(--color-text-primary);
+}
+.path-result__desc {
+  font-size: var(--font-size-xs);
+  color:     var(--color-text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* Path nodes chain */
+.path-result__path {
+  display:     flex;
+  align-items: center;
+  flex-wrap:   wrap;
+  gap:         var(--space-xs);
+}
+
+.path-result__path-item {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-xs);
+}
+
+.path-result__node {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  min-width:       32px;
+  padding:         4px 10px;
+  background:      var(--color-bg-surface);
+  border:          1px solid var(--color-success);
+  border-radius:   var(--radius-md);
+  font-family:     var(--font-mono);
+  font-weight:     600;
+  font-size:       var(--font-size-sm);
+  color:           var(--color-success);
+}
+
+.path-result__arrow { color: var(--color-text-muted); }
+
+.path-result__distance {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+}
+
+.path-result__distance-label {
+  font-size: var(--font-size-sm);
+  color:     var(--color-text-secondary);
+}
+
+.path-result__distance-value {
+  font-size:   var(--font-size-xl);
+  font-weight: 700;
+  color:       var(--color-success);
+  font-family: var(--font-mono);
+}
+
+/* ── Adjacency matrix (read-only) ── */
+.dashboard__matrix { overflow-x: auto; }
+
+.adj-matrix {
+  border-collapse: collapse;
+  font-size:       var(--font-size-sm);
+}
+
+.adj-matrix__corner,
+.adj-matrix__header,
+.adj-matrix__row-header {
+  padding:    6px 12px;
+  font-weight: 600;
+  font-size:   var(--font-size-xs);
+  color:       var(--color-accent);
+  background:  var(--color-accent-light);
+  text-align:  center;
+}
+
+.adj-matrix__corner {
+  color:    var(--color-text-muted);
+  background: var(--color-bg-subtle);
+  font-weight: 400;
+}
+
+.adj-matrix__cell {
+  padding:    6px 12px;
+  text-align: center;
+  font-family: var(--font-mono);
+  color:      var(--color-text-muted);
+  border:     1px solid var(--color-border);
+}
+
+.adj-matrix__cell.has-value {
+  color:      var(--color-accent);
+  font-weight: 600;
+  background: var(--color-bg-subtle);
+}
+
+.adj-matrix__cell.is-self {
+  background: var(--color-bg-subtle);
+  color:      var(--color-text-muted);
+}
+
+/* ── School table ── */
+.school-table-wrap { overflow-x: auto; }
+
+.school-table {
+  width:           100%;
+  border-collapse: collapse;
+  font-size:       var(--font-size-sm);
+  white-space:     nowrap;
+}
+
+.school-table__th {
+  padding:        6px 14px;
+  text-align:     left;
+  font-size:      var(--font-size-md);
+  font-weight:    600;
+  color:          var(--color-text-secondary);
+  letter-spacing: 0.05em;
+  border-bottom:  2px solid var(--color-border);
+  background:     var(--color-bg-surface);
+  position:       sticky;
+  top:            0;
+}
+
+.school-table__td {
+  padding:       6px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color:         var(--color-text-primary);
+}
+
+.school-table__td--index  {
+  font-weight: 600;
+  color:       var(--color-accent);
+  font-family: var(--font-mono);
+  text-align:  center;
+}
+
+.school-table__td--calc   { font-family: var(--font-mono); color: var(--color-text-secondary); padding-left : 40px}
+.school-table__td--weight { font-family: var(--font-mono); text-align: center; font-weight: 600; }
+.school-table__td--result { 
+  font-family: var(--font-mono); 
+  text-align: right;
+  padding-right: 25px;
+}
+
+/* Updated row */
+.school-table__row--updated .school-table__td--result {
+  color:       var(--color-success);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+}
+.school-table__row--updated {
+  border-left: 3px solid var(--color-success);
+}
+
+/* Restarted row — triggered a new pass */
+.school-table__row--restarted {
+  border-left: 3px solid var(--color-accent-hover);
+}
+.school-table__row--restarted .school-table__td--result {
+  color: var(--color-accent);
+}
+
+/* Pass separator */
+.school-table__separator-cell {
+  padding:       6px 14px;
+  font-size:     var(--font-size-xs);
+  font-weight:   600;
+  
+  color:         var(--color-accent);
+  background:    var(--color-accent-light);
+  
+  border-top:    2px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+/* End row */
+.school-table__row--end .school-table__td--end {
+  text-align:  center;
+  font-size:   var(--font-size-xs);
+  font-weight: 600;
+  color:       var(--color-text-primary);
+  padding:     10px;
+  background:  var(--color-bg-subtle);
+}
+
+.school-table__td--end.has-cycle {
+  color:      var(--color-danger);
+  background: var(--color-danger-light);
+}

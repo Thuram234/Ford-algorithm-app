@@ -1,0 +1,100 @@
+/* ============================================================
+   MAIN LAYOUT
+   Two views : editor (canvas + side panel) | dashboard
+   ============================================================ */
+
+.app-shell {
+  display:        flex;
+  flex-direction: column;
+  height:         100vh;
+  overflow:       hidden;
+}
+
+/* ── Editor workspace ── */
+.workspace {
+  display:  flex;
+  flex:     1;
+  overflow: hidden;
+}
+
+/* Canvas — takes all remaining horizontal space */
+.canvas-area {
+  flex:     1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Side panel — fixed full height ── */
+.side-panel {
+  display:        flex;
+  flex-direction: column;
+  width:          270px;
+  min-width:      270px;
+  background:     var(--color-bg-surface);
+  border-left:    1px solid var(--color-border);
+  overflow-y:     auto;
+}
+
+/* Divider between control panel and matrix section */
+.side-panel__divider {
+  height:     1px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* Matrix section — scrollable */
+.side-panel__matrix {
+  display:        flex;
+  flex-direction: column;
+  flex:           1;
+  overflow:       hidden;
+  min-height:     0;
+}
+
+.side-panel__matrix-content {
+  flex:       1;
+  overflow-y: auto;
+}
+
+/* Footer — view results button */
+.side-panel__footer {
+  padding:     var(--space-md);
+  border-top:  1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.view-results-btn {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-xs);
+  width:           100%;
+  padding:         10px 0;
+  font-size:       var(--font-size-sm);
+  font-weight:     600;
+  color:           var(--color-accent);
+  background:      var(--color-accent-light);
+  border:          none;
+  border-radius:   var(--radius-md);
+  cursor:          pointer;
+  transition:      background var(--transition-fast);
+}
+
+.view-results-btn:hover { background: #e0e0fa; }
+
+/* ── Dashboard view — full screen ── */
+.dashboard-view {
+  display:        flex;
+  flex-direction: column;
+  flex:           1;
+  overflow:       hidden;
+}
+
+/* Placeholder text (temporary) */
+.placeholder-text {
+  font-size:   var(--font-size-sm);
+  color:       var(--color-text-muted);
+  text-align:  center;
+  margin-top:  var(--space-xl);
+  padding:     var(--space-md);
+}

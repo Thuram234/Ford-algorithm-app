@@ -1,0 +1,179 @@
+/* ============================================================
+   MATRIX EDITOR
+   Adjacency matrix input — synchronized with Cytoscape canvas
+   ============================================================ */
+
+.matrix-editor {
+  display:        flex;
+  flex-direction: column;
+  height:         100%;
+  overflow:       hidden;
+}
+
+/* ── Empty state ── */
+.matrix-editor--empty {
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-md);
+  padding:         var(--space-xl);
+}
+
+.matrix-editor__empty-text {
+  font-size:  var(--font-size-sm);
+  color:      var(--color-text-secondary);
+  text-align: center;
+}
+
+/* ── Header ── */
+.matrix-editor__header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         var(--space-sm) var(--space-md);
+  border-bottom:   1px solid var(--color-border);
+  flex-shrink:     0;
+}
+
+.matrix-editor__title {
+  font-size:   var(--font-size-sm);
+  font-weight: 600;
+  color:       var(--color-text-primary);
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+}
+
+.matrix-editor__size {
+  font-size:   var(--font-size-xs);
+  font-weight: 400;
+  color:       var(--color-text-secondary);
+  background:  var(--color-bg-subtle);
+  padding:     2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Scrollable matrix zone ── */
+.matrix-editor__scroll {
+  flex:       1;
+  overflow:   auto;
+  padding:    var(--space-md);
+}
+
+/* ── Table ── */
+.matrix-table {
+  border-collapse: separate;
+  border-spacing:  3px;
+  font-size:       var(--font-size-sm);
+}
+
+/* Corner cell */
+.matrix-table__corner {
+  font-size:  var(--font-size-xs);
+  color:      var(--color-text-muted);
+  font-weight: 400;
+  padding:    4px 8px;
+  text-align: center;
+}
+
+/* Column headers */
+.matrix-table__col-header {
+  padding:    2px;
+  min-width:  52px;
+}
+
+.matrix-table__header-cell {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             4px;
+  font-weight:     600;
+  color:           var(--color-accent);
+  padding:         4px 6px;
+  background:      var(--color-accent-light);
+  border-radius:   var(--radius-sm);
+}
+
+/* Remove node button inside header */
+.matrix-table__remove-btn {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  background:      transparent;
+  border:          none;
+  color:           var(--color-text-muted);
+  cursor:          pointer;
+  padding:         1px;
+  border-radius:   var(--radius-sm);
+  transition:      color var(--transition-fast);
+  line-height:     1;
+}
+
+.matrix-table__remove-btn:hover { color: var(--color-danger); }
+
+/* Row headers */
+.matrix-table__row-header {
+  font-weight:  600;
+  color:        var(--color-accent);
+  padding:      4px 10px;
+  background:   var(--color-accent-light);
+  border-radius: var(--radius-sm);
+  text-align:   center;
+  white-space:  nowrap;
+}
+
+/* Data cells */
+.matrix-table__cell {
+  padding: 2px;
+}
+
+/* Self-reference diagonal */
+.matrix-table__self-cell {
+  width:           48px;
+  height:          36px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  background:      var(--color-bg-subtle);
+  border-radius:   var(--radius-sm);
+  color:           var(--color-text-muted);
+  font-size:       var(--font-size-lg);
+}
+
+/* Input cells */
+.matrix-table__input {
+  width:         48px;
+  height:        36px;
+  text-align:    center;
+  font-size:     var(--font-size-sm);
+  font-family:   var(--font-mono);
+  font-weight:   500;
+  color:         var(--color-text-primary);
+  background:    var(--color-bg-surface);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline:       none;
+  transition:    border-color var(--transition-fast),
+                 /*background  var(--transition-fast);*/;
+
+  /* Hide number input arrows */
+  /*-moz-appearance:    textfield;*/
+}
+
+.matrix-table__input::-webkit-outer-spin-button,
+.matrix-table__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.matrix-table__input::placeholder { color: var(--color-text-muted); }
+
+.matrix-table__input:focus {
+  border-color: var(--color-accent);
+  background:   var(--color-accent-light);
+}
+
+.matrix-table__input.has-value {
+  border-color: var(--color-border-medium);
+  background:   var(--color-bg-subtle);
+  color:        var(--color-accent);
+  font-weight:  600;
+}

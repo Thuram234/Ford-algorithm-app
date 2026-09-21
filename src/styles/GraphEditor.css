@@ -1,0 +1,68 @@
+/* ============================================================
+   GRAPH EDITOR
+   Interactive Cytoscape canvas + toolbar + hint bar
+   ============================================================ */
+
+.graph-editor {
+  display:        flex;
+  flex-direction: column;
+  height:         100%;
+  width:          100%;
+}
+
+/* ── Toolbar ── */
+.graph-toolbar {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-xs);
+  padding:       var(--space-xs) var(--space-lg);;
+  background:    var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  height: 45px;
+}
+
+.graph-toolbar__modes,
+.graph-toolbar__actions {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-xs);
+}
+
+.graph-toolbar__divider {
+  width:      1px;
+  height:     20px;
+  background: var(--color-border);
+  margin:     0 var(--space-xs);
+}
+
+/* ── Canvas ── */
+.graph-editor__canvas {
+  flex:     1;
+  overflow: hidden;
+}
+
+/* Cursor feedback per mode */
+.graph-editor__canvas--addNode  { cursor: cell; }
+.graph-editor__canvas--addEdge  { cursor: crosshair; }
+.graph-editor__canvas--select   { cursor: default; }
+
+/* ── Hint bar ── */
+.graph-editor__hint {
+  padding:     var(--space-xs) var(--space-md);
+  font-size:   var(--font-size-xs);
+  color:       var(--color-text-secondary);
+  background:  var(--color-bg-subtle);
+  border-top:  1px solid var(--color-border);
+  text-align:  center;
+}
+
+/* Pulsing animation on active edge during step-by-step */
+@keyframes pulse-edge {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.4; }
+}
+
+/* Applied via Cytoscape class — targets the canvas element */
+.graph-editor__canvas .active {
+  animation: pulse-edge 800ms ease-in-out infinite;
+}

@@ -1,0 +1,117 @@
+/* ============================================================
+   GLOBAL VARIABLE & RESET
+   Palet : thème clair, accent indigo, sémantique fonctionnelle
+   ============================================================ */
+
+:root {
+
+  /* --- Backgrounds --- */
+  --color-bg-page:       #f5f5fa;   /* fond général de l'app       */
+  --color-bg-surface:    #ffffff;   /* panneaux, cartes             */
+  --color-bg-subtle:     #f0f0f8;   /* hover, cellules zebra        */
+
+  /* --- Accent (indigo doux) --- */
+  --color-accent:        #6366f1;   /* boutons, nœuds, éléments clés */
+  --color-accent-hover:  #4f46e5;   /* hover sur accent              */
+  --color-accent-light:  #ededfb;   /* badges, fonds légers          */
+
+  /* --- Sémantique (états fonctionnels uniquement) --- */
+  --color-success:       #16a34a;   /* chemin optimal trouvé        */
+  --color-success-light: #dcfce7;   /* fond badge succès            */
+  --color-warning:       #f59e0b;   /* arc en cours de relaxation   */
+  --color-warning-light: #fef3c7;   /* fond badge warning           */
+  --color-danger:        #dc2626;   /* cycle aberrant détecté       */
+  --color-danger-light:  #fee2e2;   /* fond badge danger            */
+
+  /* --- Texte --- */
+  --color-text-primary:   #1e1e2e;  /* titres, valeurs importantes  */
+  --color-text-secondary: #6b7280;  /* labels, descriptions         */
+  --color-text-muted:     #d1d5db;  /* éléments désactivés          */
+
+  /* --- Bordures --- */
+  --color-border:         #e8e8f0;  /* bordure standard             */
+  --color-border-medium:  #d1d1e0;  /* bordure hover / emphasis     */
+
+  /* --- Graphe Cytoscape (états visuels) --- */
+  --color-node:           #6366f1;  /* nœud standard                */
+  --color-node-selected:  #4f46e5;  /* nœud sélectionné             */
+  --color-node-source:    #16a34a;  /* nœud source                  */
+  --color-node-target:    #dc2626;  /* nœud destination             */
+  --color-edge:           #d1d1e0;  /* arc standard                 */
+  --color-edge-active:    #f59e0b;  /* arc en cours de relaxation   */
+  --color-path:           #16a34a;  /* arc du chemin optimal        */
+
+  /* --- Typographie --- */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --font-size-xs:  0.75rem;    /* 12px */
+  --font-size-sm:  0.875rem;   /* 14px */
+  --font-size-md:  1rem;       /* 16px */
+  --font-size-lg:  1.125rem;   /* 18px */
+  --font-size-xl:  1.25rem;    /* 20px */
+
+  /* --- Espacements --- */
+  --space-xs:  0.25rem;   /* 4px  */
+  --space-sm:  0.5rem;    /* 8px  */
+  --space-md:  1rem;      /* 16px */
+  --space-lg:  1.5rem;    /* 24px */
+  --space-xl:  2rem;      /* 32px */
+
+  /* --- Arrondis --- */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+
+  /* --- Ombres légères (thème clair) --- */
+  --shadow-sm:  0 1px 3px rgba(99, 102, 241, 0.06);
+  --shadow-md:  0 4px 12px rgba(99, 102, 241, 0.08);
+  --shadow-lg:  0 8px 24px rgba(99, 102, 241, 0.10);
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+}
+
+/* ============================================================
+   RESET DE BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+html {
+  font-size:       16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:            var(--font-sans);
+  font-size:              var(--font-size-md);
+  color:                  var(--color-text-primary);
+  background-color:       var(--color-bg-page);
+  line-height:            1.6;
+  min-height:             100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   UTILITAIRES GLOBAUX
+   ============================================================ */
+
+/* Scrollbar fine et discrète */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: var(--color-bg-subtle); }
+::-webkit-scrollbar-thumb  { background: var(--color-border-medium); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* Sélection de texte dans les tons accent */
+::selection {
+  background: var(--color-accent-light);
+  color:      var(--color-accent-hover);
+}

@@ -1,0 +1,66 @@
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 56px;
+	padding : 0 var(--space-lg);
+	background: var(--color-bg-surface);
+	border-bottom: 2px solid var(--color-border);
+	box-shadow: var(--shadow-sm);
+	position : relative;
+	z-index  : 100;
+}
+
+/*--- Brand ---*/
+.navbar__brand {
+	display: flex;
+	align-items: center;
+	gap : var(--space-sm);
+}
+
+.navbar__logo {
+	display: flex;
+	align-items: center;
+	align-items:     center;
+  	justify-content: center;
+  	width:           36px;
+  	height:          36px;
+  	background:      var(--color-accent-light);
+  	color:           var(--color-accent);
+  	border-radius:   var(--radius-md);
+
+}
+
+.navbar__titles {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+	
+}
+
+.navbar__name {
+	font-size:   var(--font-size-md);
+  	font-weight: 600;
+  	color:       var(--color-text-primary);
+	letter-spacing: -0.01em;
+}
+
+.navbar__tagline {
+  font-size: var(--font-size-xs);
+  color:     var(--color-text-secondary);
+}
+
+
+/* ── Main actions ── */
+.navbar__actions {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+  margin-left: auto;    /* ← pousse les actions vers la droite */
+}
+
+.navbar__right {
+	display: flex;
+	align-items: center;
+  	gap:         var(--space-sm);
+}
